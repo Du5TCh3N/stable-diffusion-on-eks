@@ -1,0 +1,18 @@
+{
+    "alwayson_scripts": {
+        "task": "text-to-image",
+        "sd_model_checkpoint": "v1-5-pruned-emaonly.safetensors",
+        "id_task": "3",
+        "uid": "123",
+        "save_dir": "new_outputs"
+    },
+    "model": "Minimalistic",
+    "loraModel": "Minimalistic",
+    "imageSize": "1024 x 1024 (正方形)",
+    "prompt": "Living room with brown leather sofa",
+    "inferenceSteps": "20",
+    "textGuidanceScale": "8",
+    "loraGuidanceScale": "0.5",
+    "controlnetGuidanceScale": "0.8",
+    "seed": "-1"
+}
