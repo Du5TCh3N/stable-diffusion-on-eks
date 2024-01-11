@@ -6,10 +6,10 @@
     -d @test.json
 
 
-https://x5eas04vw1.execute-api.cn-north-1.amazonaws.com.cn/prod/
-9TTM3vyVQy2d46XjgGxSz2y20uQXzdxe4ys8aoXB
+https://a010eozjck.execute-api.cn-north-1.amazonaws.com.cn/prod/
+hbiVUzmukR2ejXv6KJalk9mXafL6ZEfo1v2wXSgY
 
-curl -X POST https://x5eas04vw1.execute-api.cn-north-1.amazonaws.com.cn/prod/ \
+curl -X POST https://a010eozjck.execute-api.cn-north-1.amazonaws.com.cn/prod/ \
     -H 'Content-Type: application/json' \
-    -H 'x-api-key: 9TTM3vyVQy2d46XjgGxSz2y20uQXzdxe4ys8aoXB' \
+    -H 'x-api-key: hbiVUzmukR2ejXv6KJalk9mXafL6ZEfo1v2wXSgY' \
     -d @test.json
