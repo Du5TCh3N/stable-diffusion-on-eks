@@ -17,11 +17,11 @@ modelsRuntime:
       inferenceApi:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/inference-api # Image Repository of stable diffusion runtime.
-          tag: 9
+          tag: 10
       queueAgent:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/queue-agent # Image Repository of queue agent.
-          tag: 3
+          tag: 4
       persistence:
         enabled: true
         existingClaim: "efs-model-storage-pvc"
