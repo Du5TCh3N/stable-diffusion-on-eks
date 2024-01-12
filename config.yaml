@@ -21,7 +21,7 @@ modelsRuntime:
       queueAgent:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/queue-agent # Image Repository of queue agent.
-          tag: 4
+          tag: 5
       persistence:
         enabled: true
         existingClaim: "efs-model-storage-pvc"
