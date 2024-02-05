@@ -17,7 +17,7 @@ modelsRuntime:
       inferenceApi:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/inference-api # Image Repository of stable diffusion runtime.
-          tag: 20
+          tag: 21
       queueAgent:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/queue-agent # Image Repository of queue agent.
@@ -26,7 +26,7 @@ modelsRuntime:
         enabled: true
         existingClaim: "efs-model-storage-pvc"
       scaling:
-        queueLength: 20 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
+        queueLength: 10 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
         minReplicaCount: 1 # Minimum number of replicas of SD Runtime.
         maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
         cooldownPeriod: 200 # The period (in seconds) to wait after the last message before scaling down.
