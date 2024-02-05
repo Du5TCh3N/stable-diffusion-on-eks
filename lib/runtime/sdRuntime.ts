@@ -31,7 +31,7 @@ export const defaultProps: blueprints.addons.HelmAddOnProps & SDRuntimeAddOnProp
   namespace: 'sdruntime',
   release: 'sdruntime',
   version: '0.1.0',
-  repository: 'http://63.32.91.248:8099/',
+  repository: 'http://52.17.138.94:8099/',
   values: {
     global: {
       awsRegion: cdk.Aws.REGION,
