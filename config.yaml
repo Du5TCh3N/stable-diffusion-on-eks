@@ -38,7 +38,7 @@ modelsRuntime:
         queueLength: 3 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
         minReplicaCount: 1 # Minimum number of replicas of SD Runtime.
         maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
-        cooldownPeriod: 200 # The period (in seconds) to wait after the last message before scaling down.
+        cooldownPeriod: 300 # The period (in seconds) to wait after the last message before scaling down.
 dynamicModelRuntime:
   enabled: false
   namespace: "default"
