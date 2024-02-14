@@ -7,15 +7,15 @@ modelsRuntime:
   modelFilename: "v1-5-pruned-emaonly.safetensors"
   extraValues:
     karpenter:
-      nodeTemplate:
-        amiFamily: Bottlerocket
-        dataVolume:
-          volumeSize: 80Gi
-          volumeType: gp3
-          deleteOnTermination: true
-          iops: 4000
-          throughput: 1000
-          snapshotID: snap-0a0d77a08e921c649 # EBS Snapshot ID with format snap-<snapshotid>
+      # nodeTemplate:
+      #   amiFamily: Bottlerocket
+      #   dataVolume:
+      #     volumeSize: 80Gi
+      #     volumeType: gp3
+      #     deleteOnTermination: true
+      #     iops: 4000
+      #     throughput: 1000
+      #     snapshotID: snap-0a0d77a08e921c649 # EBS Snapshot ID with format snap-<snapshotid>
       provisioner:
         instanceType:
         - "g4dn.xlarge"
@@ -26,7 +26,7 @@ modelsRuntime:
       inferenceApi:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/inference-api # Image Repository of stable diffusion runtime.
-          tag: 23
+          tag: 25
       queueAgent:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/queue-agent # Image Repository of queue agent.
@@ -38,7 +38,7 @@ modelsRuntime:
         queueLength: 3 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
         minReplicaCount: 1 # Minimum number of replicas of SD Runtime.
         maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
-        cooldownPeriod: 300 # The period (in seconds) to wait after the last message before scaling down.
+        cooldownPeriod: 1200 # The period (in seconds) to wait after the last message before scaling down.
 dynamicModelRuntime:
   enabled: false
   namespace: "default"
