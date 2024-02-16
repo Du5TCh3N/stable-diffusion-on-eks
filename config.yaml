@@ -7,15 +7,15 @@ modelsRuntime:
   modelFilename: "v1-5-pruned-emaonly.safetensors"
   extraValues:
     karpenter:
-      # nodeTemplate:
-      #   amiFamily: Bottlerocket
-      #   dataVolume:
-      #     volumeSize: 80Gi
-      #     volumeType: gp3
-      #     deleteOnTermination: true
-      #     iops: 4000
-      #     throughput: 1000
-      #     snapshotID: snap-0a0d77a08e921c649 # EBS Snapshot ID with format snap-<snapshotid>
+      nodeTemplate:
+        amiFamily: Bottlerocket
+        dataVolume:
+          volumeSize: 80Gi
+          volumeType: gp3
+          deleteOnTermination: true
+          iops: 4000
+          throughput: 1000
+          snapshotID: snap-0c122affcfefdb655 # EBS Snapshot ID with format snap-<snapshotid>
       provisioner:
         instanceType:
         - "g4dn.xlarge"
@@ -35,8 +35,8 @@ modelsRuntime:
         enabled: true
         existingClaim: "efs-model-storage-pvc"
       scaling:
-        queueLength: 3 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
-        minReplicaCount: 1 # Minimum number of replicas of SD Runtime.
+        queueLength: 5 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
+        minReplicaCount: 0 # Minimum number of replicas of SD Runtime.
         maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
         cooldownPeriod: 1200 # The period (in seconds) to wait after the last message before scaling down.
 dynamicModelRuntime:
