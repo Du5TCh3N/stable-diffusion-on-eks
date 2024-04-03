@@ -51,11 +51,11 @@ modelsRuntime:
         capacityType:
           onDemand: true
           spot: false
-    sdWebuiInpaintApi:
-      inpaintApi:
+    sdWebuiInferenceApi:
+      inferenceApi:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/inpaint-api # Image Repository of stable diffusion runtime.
-          tag: 1
+          tag: 2
       queueAgent:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/queue-agent # Image Repository of queue agent.
@@ -65,7 +65,7 @@ modelsRuntime:
         existingClaim: "efs-model-storage-pvc"
       scaling:
         queueLength: 5 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
-        minReplicaCount: 1 # Minimum number of replicas of SD Runtime.
+        minReplicaCount: 0 # Minimum number of replicas of SD Runtime.
         maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
         cooldownPeriod: 1200 # The period (in seconds) to wait after the last message before scaling down.
 dynamicModelRuntime:
