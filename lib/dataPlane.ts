@@ -89,7 +89,7 @@ export default class DataPlaneStack {
     }
 
     const containerInsightsParams: blueprints.ContainerInsightAddonProps = {
-      repository: 'http://34.244.236.4:8099/',
+      repository: 'http://54.246.153.19:8099/',
       values: {
         adotCollector: {
           daemonSet: {
@@ -135,7 +135,7 @@ export default class DataPlaneStack {
       new blueprints.addons.KubeProxyAddOn(),
       new blueprints.addons.AwsLoadBalancerControllerAddOn(),
       new blueprints.addons.EbsCsiDriverAddOn(),
-      new blueprints.addons.EfsCsiDriverAddOn({repository: 'http://34.244.236.4:8099/'}),
+      new blueprints.addons.EfsCsiDriverAddOn({repository: 'http://54.246.153.19:8099/'}),
       new blueprints.addons.KarpenterAddOn({ interruptionHandling: true }),
       new blueprints.addons.KedaAddOn(kedaParams),
       new blueprints.addons.ContainerInsightsAddOn(containerInsightsParams),
