@@ -7,15 +7,6 @@ modelsRuntime:
   modelFilename: "v1-5-pruned-emaonly.safetensors"
   extraValues:
     karpenter:
-      # nodeTemplate:
-      #   amiFamily: Bottlerocket
-      #   dataVolume:
-      #     volumeSize: 80Gi
-      #     volumeType: gp3
-      #     deleteOnTermination: true
-      #     iops: 4000
-      #     throughput: 1000
-      #     snapshotID: snap-0c122affcfefdb655 # EBS Snapshot ID with format snap-<snapshotid>
       provisioner:
         instanceType:
         - "g4dn.xlarge"
@@ -65,6 +56,35 @@ modelsRuntime:
         existingClaim: "efs-model-storage-pvc"
       scaling:
         queueLength: 15 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
+        minReplicaCount: 0 # Minimum number of replicas of SD Runtime.
+        maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
+        cooldownPeriod: 1200 # The period (in seconds) to wait after the last message before scaling down.
+- name: "sdxl-sdruntime"
+  namespace: "default"
+  type: "SDWebUI"
+  modelFilename: "sdxl"
+  extraValues:
+    karpenter:
+      provisioner:
+        instanceType:
+        - "g5.xlarge"
+        capacityType:
+          onDemand: true
+          spot: false
+    sdWebuiInferenceApi:
+      inferenceApi:
+        image:
+          repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/sdxl-api # Image Repository of stable diffusion runtime.
+          tag: 6
+      queueAgent:
+        image:
+          repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/sdxl-queue-agent # Image Repository of queue agent.
+          tag: 1
+      persistence:
+        enabled: true
+        existingClaim: "efs-model-storage-pvc"
+      scaling:
+        queueLength: 5 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
         minReplicaCount: 0 # Minimum number of replicas of SD Runtime.
         maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
         cooldownPeriod: 1200 # The period (in seconds) to wait after the last message before scaling down.
