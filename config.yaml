@@ -17,7 +17,7 @@ modelsRuntime:
       inferenceApi:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/inference-api # Image Repository of stable diffusion runtime.
-          tag: 43
+          tag: 45
       queueAgent:
         image:
           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/queue-agent # Image Repository of queue agent.
@@ -59,64 +59,64 @@ modelsRuntime:
         minReplicaCount: 0 # Minimum number of replicas of SD Runtime.
         maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
         cooldownPeriod: 1200 # The period (in seconds) to wait after the last message before scaling down.
-- name: "sdxl-sdruntime"
-  namespace: "default"
-  type: "SDWebUI"
-  modelFilename: "sdxl"
-  extraValues:
-    karpenter:
-      provisioner:
-        instanceType:
-        - "g5.xlarge"
-        capacityType:
-          onDemand: true
-          spot: false
-    sdWebuiInferenceApi:
-      inferenceApi:
-        image:
-          repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/sdxl-api # Image Repository of stable diffusion runtime.
-          tag: 7
-      queueAgent:
-        image:
-          repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/sdxl-queue-agent # Image Repository of queue agent.
-          tag: 1
-      persistence:
-        enabled: true
-        existingClaim: "efs-model-storage-pvc"
-      scaling:
-        queueLength: 5 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
-        minReplicaCount: 0 # Minimum number of replicas of SD Runtime.
-        maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
-        cooldownPeriod: 1200 # The period (in seconds) to wait after the last message before scaling down.
-- name: "sdxl-img2img-sdruntime"
-  namespace: "default"
-  type: "SDWebUI"
-  modelFilename: "sdxl-img2img"
-  extraValues:
-    karpenter:
-      provisioner:
-        instanceType:
-        - "g5.xlarge"
-        capacityType:
-          onDemand: true
-          spot: false
-    sdWebuiInferenceApi:
-      inferenceApi:
-        image:
-          repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/sdxl-img2img-api # Image Repository of stable diffusion runtime.
-          tag: 1
-      queueAgent:
-        image:
-          repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/sdxl-queue-agent # Image Repository of queue agent.
-          tag: 1
-      persistence:
-        enabled: true
-        existingClaim: "efs-model-storage-pvc"
-      scaling:
-        queueLength: 5 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
-        minReplicaCount: 0 # Minimum number of replicas of SD Runtime.
-        maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
-        cooldownPeriod: 1200 # The period (in seconds) to wait after the last message before scaling down.
+# - name: "sdxl-sdruntime"
+#   namespace: "default"
+#   type: "SDWebUI"
+#   modelFilename: "sdxl"
+#   extraValues:
+#     karpenter:
+#       provisioner:
+#         instanceType:
+#         - "g5.xlarge"
+#         capacityType:
+#           onDemand: true
+#           spot: false
+#     sdWebuiInferenceApi:
+#       inferenceApi:
+#         image:
+#           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/sdxl-api # Image Repository of stable diffusion runtime.
+#           tag: 7
+#       queueAgent:
+#         image:
+#           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/sdxl-queue-agent # Image Repository of queue agent.
+#           tag: 1
+#       persistence:
+#         enabled: true
+#         existingClaim: "efs-model-storage-pvc"
+#       scaling:
+#         queueLength: 5 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
+#         minReplicaCount: 0 # Minimum number of replicas of SD Runtime.
+#         maxReplicaCount: 1 # Maxinum number of replicas of SD Runtime.
+#         cooldownPeriod: 1200 # The period (in seconds) to wait after the last message before scaling down.
+# - name: "sdxl-img2img-sdruntime"
+#   namespace: "default"
+#   type: "SDWebUI"
+#   modelFilename: "sdxl-img2img"
+#   extraValues:
+#     karpenter:
+#       provisioner:
+#         instanceType:
+#         - "g5.xlarge"
+#         capacityType:
+#           onDemand: true
+#           spot: false
+#     sdWebuiInferenceApi:
+#       inferenceApi:
+#         image:
+#           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/sdxl-img2img-api # Image Repository of stable diffusion runtime.
+#           tag: 1
+#       queueAgent:
+#         image:
+#           repository: 576159396516.dkr.ecr.cn-north-1.amazonaws.com.cn/huiyoujia/sdxl-queue-agent # Image Repository of queue agent.
+#           tag: 1
+#       persistence:
+#         enabled: true
+#         existingClaim: "efs-model-storage-pvc"
+#       scaling:
+#         queueLength: 5 # Target value for queue length. One new instance will be launched when queue launch reaches the value.
+#         minReplicaCount: 0 # Minimum number of replicas of SD Runtime.
+#         maxReplicaCount: 5 # Maxinum number of replicas of SD Runtime.
+#         cooldownPeriod: 1200 # The period (in seconds) to wait after the last message before scaling down.
 dynamicModelRuntime:
   enabled: false
   namespace: "default"
